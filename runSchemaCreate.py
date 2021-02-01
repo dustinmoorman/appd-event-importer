@@ -11,7 +11,7 @@ print("Using API Key: ", apiKey)
 ##
 # Set your schema name
 ##
-schemaName = "dmoorman_demo_schema"
+schemaName = "dmoorman_demo"
 
 url = "https://analytics.api.appdynamics.com/events/schema/" + schemaName
 
@@ -27,9 +27,12 @@ headerdata = {'X-Events-API-AccountName': accountName, 'X-Events-API-Key': apiKe
 # - Boolean
 # - Integer
 # - Float
+#
+# Note: You will also get two fields out of the box - pickupTimestamp and Timestamp.
+# For more information: https://docs.appdynamics.com/display/PRO45/Analytics+Events+API
 ##
 
-schema = '{"schema": {"time": "date","URL": "string", "Result": "boolean"}}'
+schema = '{"schema": {"URL": "string", "Type": "string", "Result": "boolean"}}'
 
 response = requests.post(url, data = schema, headers = headerdata)
 
